@@ -23,7 +23,7 @@ useEffect(()=>{
   }
 },[])
 
-  const POST_CATEGORIES = ["Agriculture", "Education", "Art", "Invesment", "Weather","IT"]
+  const POST_CATEGORIES = ["Technology", "Social Media", "Entertainment", "Business","IT"]
 
   const createPost = async(e)=>{
     e.preventDefault()

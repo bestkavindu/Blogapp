@@ -35,8 +35,13 @@ const Header = () => {
       </ul>}
       {!currentUser?.id && isNavShowing && <ul className='nav__menu'>
         
-        <li><Link to="/authors" onClick={closeNavHandler}>Authors</Link></li>
-        <li className='login_btn'><Link to="/login" onClick={closeNavHandler}>Login</Link></li>
+        {/* <li><Link to="/authors" onClick={closeNavHandler}>Authors</Link></li> */}
+        <li><Link to="/login" onClick={closeNavHandler}>Technology</Link></li>
+        <li><Link to="/login" onClick={closeNavHandler}>Social Media</Link></li>
+        <li><Link to="/login" onClick={closeNavHandler}>Entertainment </Link></li>
+        <li><Link to="/login" onClick={closeNavHandler}>Business</Link></li>
+        <li><Link to="/login" onClick={closeNavHandler}>IT</Link></li>
+        <li className='login_btn'><Link to="/login" onClick={closeNavHandler}>Login</Link></li> 
       </ul>}
       <button className='nav__toggle-btn' onClick={e=>setIsNavShowing(!isNavShowing)}>
         {isNavShowing ? <AiOutlineClose/> : <FaBars/>}
