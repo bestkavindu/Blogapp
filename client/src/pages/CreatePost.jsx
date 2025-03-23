@@ -17,6 +17,7 @@ const CreatePost = () => {
   const navigate = useNavigate()
 
 useEffect(()=>{
+  document.title = 'Create Post';
   if(!token){
     navigate('/login')
   }

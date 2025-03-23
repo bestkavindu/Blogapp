@@ -22,9 +22,8 @@ const PostDetail = () => {
       setIsLoading(true)
       try {
         const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/posts/${id}`)
-        console.log(id)
         setPost(response.data)
-        console.log(response.data)
+
         setCreatorID(response.data.creator)
       } catch (error) {
         setError(error)
@@ -46,8 +45,8 @@ const PostDetail = () => {
         <div className="post-detail__header">
           <PostAuthor creator = {post.creator} createdAt={post.createdAt}/>
           {currentUser?.id == post?.creator && <div className="post-detail__button">
-            <Link to={`/posts/www/edit`} className='btn sm primary'>Edit</Link>
-            <DeletePost postID = {id}/>
+            <Link to={`/posts/${id}/edit`} className='btn sm primary'>Edit</Link>
+            <DeletePost postID = {post._id}/>
           </div>}
         </div>
         <h1>{post.title}</h1>

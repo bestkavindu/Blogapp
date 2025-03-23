@@ -33,11 +33,13 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  /* font-family: "Poppins", sans-serif; */
+  font-family: "Comic Sans MS", cursive;
   background: var(--color-bg);
   font-size: 0.9rem;
   line-height: 1.6;
   color: var(--color-gray-700);
+  box-sizing: border-box;
 }
 
 a {
@@ -139,7 +141,7 @@ section {
 nav {
   width: 100vw;
   height: 5rem;
-  display: grid;
+  display: flex;
   place-items: center;
   background: var(225, 225, 225, 0.5);
   position: fixed;
@@ -171,7 +173,7 @@ nav {
   gap: 3rem;
 }
 
-.nav__menu li a{
+.nav__menu li a {
   font-size: 1.2rem;
   font-weight: 600;
 }
@@ -245,7 +247,8 @@ footer {
   cursor: default;
 }
 
-.post:hover {
+.post:hover,
+.posta:hover {
   box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.5);
 }
 
@@ -370,10 +373,18 @@ footer {
 input,
 select,
 textarea {
-  width: 100%;
+
   padding: 0.6rem 1rem;
-  border-radius: var(--radius-1);
+  border-radius: var(--radius-3);
   resize: none;
+  padding: 1rem;
+  margin-bottom: 12px;
+  border: 2px solid #ddd;
+  /* Border color input */
+  transition: border-color 0.3s ease-in-out;
+  outline: none;
+  color: #333;
+
 }
 
 .form__error-message {
@@ -391,7 +402,7 @@ textarea {
 .register,
 .login,
 .create-post {
-  margin-top: 5rem;
+  margin-top: 7rem;
   margin-inline: auto;
   height: calc(100vh-12rem);
   display: grid;
@@ -410,6 +421,33 @@ textarea {
 .login__small span {
   color: blue;
 }
+
+.login {
+  max-width: 800px;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+.login .container {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+}
+
+.login button{
+width: 100%;
+font-size: 1.2rem;
+padding: 10px;
+}
+
+.login h2{
+  font-size: 3rem;
+}
+
+
+
 
 
 /* *********************Authors************************* */
@@ -581,16 +619,17 @@ textarea {
   transition: var(--transition);
 }
 
-.main_category_item a:hover{
+.main_category_item a:hover {
   background-color: white;
 }
 
-.featured__post{
+.featured__post {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   margin-top: 8rem;
 }
+
 .posta {
   display: flex;
   flex-direction: row;
@@ -599,53 +638,59 @@ textarea {
   transition: var(--transition);
   cursor: default;
   padding: 0.7rem;
+  gap: 1rem;
 }
 
-.secoundery_feature{
+.secoundery_feature {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.main_featured_poat{
+.main_featured_poat {
   padding-bottom: 3.5rem;
 }
 
-.posta .post__thumbnail{
-  height: 8rem ;
-  width: 15rem;
-} 
+.posta .post__thumbnail {
+  height: 8.5rem;
+  border-radius: var(--radius-3);
+  overflow: hidden;
+  width: 33.33%;
+  object-fit: cover;
+}
 
-.posta .post__content{
+.posta .post__content {
   margin-top: 0.2rem;
   margin-left: 0.5rem;
-} 
+}
 
-.posta .post__content h3{
+.posta .post__content h3 {
   margin: 0.2rem 0 0.6rem;
-} 
+}
 
-.posta .post__footer{
-  margin-top: 0.2rem;
+.posta .post__footer {
+  margin-top: 0.5rem;
 }
 
 .posta .post__footer__category {
   background: var(--color-gray-100);
-  padding: 0.1rem;
+  padding: 0.2rem 0.4rem;
   border-radius: 1rem;
 }
 
-.login_btn{
-  background:#4652ef;
+.login_btn {
+  background: #4652ef;
   padding: 0.4rem 0.7rem;
   color: white !important;
   border-radius: 1rem;
+
 }
 
-.login_btn a{
+.login_btn a {
   color: white !important;
 }
-.login__form{
+
+.login__form {
   margin-top: 2rem;
 }
 
@@ -744,4 +789,37 @@ textarea {
   .dashboard__post-thumbnail {
     width: 5rem;
   }
+
+  .featured__post {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 8rem;
+  }
+
+  .posta {
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .posta .post__thumbnail {
+    border-radius: var(--radius-3);
+    overflow: hidden;
+    height: 16rem;
+    width: 100%;
+  }
+
+  .posta .post__content h3 {
+    margin: 1rem 0 0.6rem;
+  }
+
+  .posta .post__content {
+    margin-top: 1.5rem;
+  }
+
+  .posta .post__footer {
+    margin-top: 2rem;
+  }
+
 }

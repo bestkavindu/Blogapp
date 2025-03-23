@@ -39,7 +39,10 @@ const Login = () => {
   return (
     <div className='login'>
       <div className="container">
+        <div>
+
         <h2>Sign In</h2>
+        </div>
         <form className='form login__form' onSubmit={login}>
           {error&&<p className='form__error-message'>{error}</p>}
           <input type="email" placeholder='Email' name='email' value={userData.email} onChange={chnageInputHandler} />

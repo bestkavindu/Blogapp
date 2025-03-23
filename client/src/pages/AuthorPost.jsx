@@ -13,6 +13,7 @@ const AuthorPost = () => {
     const[isLoading, setIsLoading] = useState(false)
 
   useEffect(()=>{
+    // document.title = 'My Page Title';
     const getPost = async ()=>{
       setIsLoading(true)
       try {

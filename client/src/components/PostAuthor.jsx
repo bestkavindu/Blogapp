@@ -14,6 +14,7 @@ TimeAgo.addLocale(ru)
 const PostAuthor = ({ creator, createdAt }) => {
 
   const [author, setAuthor] = useState({})
+  
 
 
   useEffect(() => {
@@ -21,7 +22,6 @@ const PostAuthor = ({ creator, createdAt }) => {
       try {
         const responce = await axios.get(`${process.env.REACT_APP_BASE_URL}/users/${creator}`)
         setAuthor(responce?.data)
-        console.log(responce.data)
       } catch (error) {
         console.log(error)
       }

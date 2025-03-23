@@ -21,7 +21,7 @@ const createPost = async (req, res, next) => {
         }
 
         let fileName = img.name;
-        console.log(req.files)
+
         let splitedFileName = fileName.split('.')
         let newFileName = splitedFileName[0] + uuid() + '.' + splitedFileName[splitedFileName.length - 1]
         img.mv(path.join(__dirname, '..', '/uploads', newFileName), async(error)=>{
@@ -55,6 +55,17 @@ const getPosts = async (req, res, next) => {
     }
 }
 
+const getFeaturedPost = async(req, res, next) =>{
+    try {
+
+        const post = await Post.findOne().sort({updatedAt:-1})
+        res.status(200).json(post)
+        
+    } catch (error) {
+        return next(new HttpError(error))
+    }
+}
+
 const getSinglePost = async (req, res, next) => {
     const postId = req.params.id
     const post = await Post.findById(postId)
@@ -67,7 +78,8 @@ const getSinglePost = async (req, res, next) => {
 const getCatPost = async (req, res, next) => {
     try {
         const {category} = req.params
-        const post = await Post.findOne({category}).sort({createdAt: -1})
+        const post = await Post.find({category}).sort({createdAt: -1})
+        // console.log(post)
         res.status(200).json(post)
     } catch (error) {
         return next(new HttpError(error))
@@ -91,13 +103,20 @@ const editPost = async (req, res, next) => {
         let updatedPost
         const postId = req.params.id
 
+
         let{title, category, desc} = req.body
+        
         if(!title || !category || desc.length < 12){
             return next(new HttpError("fill all the fields",422))
         }
 
         if(!req.files){
-            updatedPost =await Post.findById(postId, {title, category, desc}, {new:true})
+            console.log(title)
+            updatedPost =await Post.findByIdAndUpdate(postId, {title, category, desc}, {new:true})
+            if(!updatedPost){
+                return next(new HttpError('post did not update'))
+            }
+            res.status(200).json(updatedPost)
         }
         else{
             const post = await Post.findById(postId)
@@ -163,4 +182,4 @@ const deletePost = async (req, res, next) => {
 
 }
 
-module.exports = {createPost, getPosts, getSinglePost, getCatPost, getUserPost, editPost, deletePost}
+module.exports = {createPost, getPosts, getFeaturedPost, getSinglePost, getCatPost, getUserPost, editPost, deletePost}

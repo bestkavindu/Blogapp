@@ -1,9 +1,4 @@
 import React, { useEffect, useState } from 'react'
-
-import Img1 from '../images/blog1.jpg'
-import Img2 from '../images/blog2.jpg'
-import Img3 from '../images/blog3.jpg'
-import Img4 from '../images/blog4.jpg'
 import PostItem from './PostItem'
 import Loader from './Loader'
 
@@ -17,8 +12,8 @@ const Post = () => {
     const fetchPost = async () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/posts`)
-        console.log(response.data)
-        setPost(response?.data)
+        const selectedPosts = response.data.slice(4, 12);
+        setPost(selectedPosts)
       } catch (err) {
         console.log(err)
       }
