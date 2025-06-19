@@ -15,6 +15,7 @@ const [posts, setPost] = useState([])
       try {
         console.log(id)
         const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/posts/categories/${id}`)
+        console.log(response)
         setPost(response.data)
         
       } catch (error) {
@@ -22,7 +23,7 @@ const [posts, setPost] = useState([])
       }
     }
     fetchPosts()
-  }, [])
+  }, [id])
 
 
   return (

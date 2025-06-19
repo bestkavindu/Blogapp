@@ -21,14 +21,14 @@ const createPost = async (req, res, next) => {
         }
 
         let fileName = img.name;
-
+        let categorySlug = category.replace(/ /g,"-").toLowerCase()
         let splitedFileName = fileName.split('.')
         let newFileName = splitedFileName[0] + uuid() + '.' + splitedFileName[splitedFileName.length - 1]
         img.mv(path.join(__dirname, '..', '/uploads', newFileName), async(error)=>{
             if(error){
                 return next(new HttpError(error))
             } else{
-                const newPost = await Post.create({title, category,desc,img:newFileName,creator:req.user.id})
+                const newPost = await Post.create({title, category,categorySlug,desc,img:newFileName,creator:req.user.id})
                 if(!newPost){
                     return next(new HttpError('Post could not created',422))
                 }
@@ -78,8 +78,10 @@ const getSinglePost = async (req, res, next) => {
 const getCatPost = async (req, res, next) => {
     try {
         const {category} = req.params
-        const post = await Post.find({category}).sort({createdAt: -1})
-        // console.log(post)
+        let categorySlug = category.replace(/ /g,"-")
+        const post = await Post.find({categorySlug}).sort({createdAt: -1})
+        console.log(categorySlug)
+        console.log(post)
         res.status(200).json(post)
     } catch (error) {
         return next(new HttpError(error))

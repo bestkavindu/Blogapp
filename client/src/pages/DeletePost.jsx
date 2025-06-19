@@ -7,11 +7,11 @@ const DeletePost = () => {
   const token = currentUser?.token
   const navigate = useNavigate()
 
-  useEffect(() => {
-    if (!token) {
-      navigate('/login')
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (!token) {
+  //     navigate('/login')
+  //   }
+  // }, [])
   return (
 
     <Link to={`/posts/www/delete`} className='btn sm danger'>Delete</Link>

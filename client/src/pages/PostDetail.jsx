@@ -44,10 +44,12 @@ const PostDetail = () => {
       {<div className="container post-detail__container">
         <div className="post-detail__header">
           <PostAuthor creator = {post.creator} createdAt={post.createdAt}/>
-          {currentUser?.id == post?.creator && <div className="post-detail__button">
+
+          {currentUser?.id === post?.creator && <div className="post-detail__button">
             <Link to={`/posts/${id}/edit`} className='btn sm primary'>Edit</Link>
             <DeletePost postID = {post._id}/>
           </div>}
+          
         </div>
         <h1>{post.title}</h1>
         <div className="post-detail__thumbnail">

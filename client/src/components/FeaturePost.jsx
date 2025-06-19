@@ -49,7 +49,7 @@ const FeaturePoset = () => {
                             {creator && <PostAuthor creator={creator} createdAt={post.createdAt} />}
                             <div className='post__footer__category'>
 
-                                <Link to={`/posts/categories/${post.category}`}>{post.category}</Link>
+                                <Link to={`/posts/categories/${post.categorySlug}`}>{post.category}</Link>
                             </div>
                         </div>
 
@@ -58,7 +58,7 @@ const FeaturePoset = () => {
             </div>
             <div className="secoundery_feature">
 
-                {posts.map(({ _id, img, category, desc, creator, title, createdAt }) =>
+                {posts.map(({ _id, img, category,categorySlug, desc, creator, title, createdAt }) =>
                     <article className='posta' key={_id}>
                         <div className="post__thumbnail">
                             <img src={`${process.env.REACT_APP_ASSETS_URL}/uploads/${img}`} alt='' />
@@ -72,7 +72,7 @@ const FeaturePoset = () => {
                                 <PostAuthor creator={creator} createdAt={createdAt} />
                                 <div className='post__footer__category'>
 
-                                    <Link to={`/posts/categories/${category}`}>{category}</Link>
+                                    <Link to={`/posts/categories/${categorySlug}`}>{category}</Link>
                                 </div>
                             </div>
 
