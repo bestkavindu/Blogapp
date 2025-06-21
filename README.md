@@ -18,13 +18,12 @@ RESTful API backend
 - Node.js 18.8 or later
 - npm
 
-1. Clone the repository:
+#### 1. Clone the repository:
 ```properties
 git clone https://github.com/bestkavindu/Blogapp.git
 ```
 
-2. Server side:
-   -
+#### 2. Server side:
   ```bash
   cd backend
   npm install
@@ -34,7 +33,9 @@ git clone https://github.com/bestkavindu/Blogapp.git
 .env
 MONGO = mongodb+srv://{username}:{username}@{clusterName}.ooc5z.mongodb.net/?retryWrites=true&w=majority&appName={clusterName}&dbName={dbname}
 ```
-3. Install client dependencies
+
+#### 3. Install client dependencies:
+   
   ```bash
 cd client
 npm install
@@ -49,11 +50,3 @@ npm install
 - Storage: Multer 
 
 
-
-
-## Install client dependencies
-
-``` properties
-cd ../client
-npm install
-```
